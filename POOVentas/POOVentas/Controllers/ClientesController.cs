@@ -20,13 +20,13 @@ namespace POOVentas.Controllers
         [HttpGet]
         public ActionResult Crear()
         {
-            var _empleado = new ent.ClientesE();
-            return PartialView("Crear", _empleado);
+            var _cliente = new ent.ClientesE();
+            return PartialView("Crear", _cliente);
         }
         [HttpPost]
-        public ActionResult Crear(ent.ClientesE empleado)
+        public ActionResult Crear(ent.ClientesE cliente)
         {
-            new dom.ClientesD().CrearCliente(empleado);
+            new dom.ClientesD().CrearCliente(cliente);
             return RedirectToAction("Index");
         }
     }

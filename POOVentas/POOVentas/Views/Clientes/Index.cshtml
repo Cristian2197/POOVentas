@@ -86,10 +86,31 @@
             <div class="modal-body">
                 <div id="dvCrearClientes"></div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            
         </div>
     </div>
 </div>
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnCrearClientes").click(function () {
+                var _url = '/Clientes/Crear';
+                $.ajax({
+                    type: "Get",
+                    url: _url,
+                    data: {},
+                    async: false,
+                    success: function (response) {
+                        $('#dvCrearClientes').html(response);
+                    },
+                    error: function (response) {
+                        if (response.responseText != "") {
+                            alert(response.responseText);
+                        }
+                    }
+                });
+            });
+        });
+  </script>
+ }
