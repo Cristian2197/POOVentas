@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-
+using AutoMapper;
+using dom = Dominio;
 namespace POOVentas
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -13,6 +14,8 @@ namespace POOVentas
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            Mapper.Initialize(m => m.AddProfile(new dom.MapeoBD()));
         }
     }
 }
