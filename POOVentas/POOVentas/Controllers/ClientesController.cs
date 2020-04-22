@@ -29,5 +29,17 @@ namespace POOVentas.Controllers
             new dom.ClientesD().CrearCliente(cliente);
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult Editar(int id)
+        {
+            var _cliente = new dom.ClientesD().ClientesPorID(id);
+            return PartialView("Editar", _cliente);
+        }
+        [HttpPost]
+        public ActionResult Editar(ent.ClientesE clienteEditado)
+        {
+            new dom.ClientesD().ModificarCliente(clienteEditado);
+            return RedirectToAction("Index");
+        }
     }
 }
