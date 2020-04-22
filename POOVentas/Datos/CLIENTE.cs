@@ -26,6 +26,7 @@ namespace Datos
         public string direccion { get; set; }
         public Nullable<System.DateTime> fecha_nacimiento { get; set; }
         public string email { get; set; }
+        public string telefono { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Factura> Factura { get; set; }

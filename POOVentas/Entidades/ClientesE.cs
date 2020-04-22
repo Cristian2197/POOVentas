@@ -19,6 +19,8 @@ namespace Entidades
         public string direccion { get; set; }
         [Display(Name = "Fecha de Nacimiento")]
         public System.DateTime fecha_nacimiento { get; set; }
+        [Display(Name = "Telefono")]
+        public string telefono { get; set; }
         [Display(Name = "Email")]
         public string email { get; set; }
 

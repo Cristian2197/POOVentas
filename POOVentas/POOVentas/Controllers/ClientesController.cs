@@ -17,5 +17,17 @@ namespace POOVentas.Controllers
             var _clientes = new dom.ClientesD().ClientesList();
             return View(_clientes);
         }
+        [HttpGet]
+        public ActionResult Crear()
+        {
+            var _empleado = new ent.ClientesE();
+            return PartialView("Crear", _empleado);
+        }
+        [HttpPost]
+        public ActionResult Crear(ent.ClientesE empleado)
+        {
+            new dom.ClientesD().CrearCliente(empleado);
+            return RedirectToAction("Index");
+        }
     }
 }
