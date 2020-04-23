@@ -30,5 +30,17 @@ namespace POOVentas.Controllers
             new dom.ProductosD().CrearProducto(producto);
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult Editar(int id)
+        {
+            var _producto = new dom.ProductosD().ProductoPorID(id);
+            return PartialView("Editar", _producto);
+        }
+        [HttpPost]
+        public ActionResult Editar(ent.ProductosE productoEditado)
+        {
+            new dom.ProductosD().ModificarProducto(productoEditado);
+            return RedirectToAction("Index");
+        }
     }
 }

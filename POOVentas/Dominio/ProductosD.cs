@@ -36,14 +36,14 @@ namespace Dominio
         public void ModificarProducto(ent.ProductosE _clienteModificar)
         {
             var _modificarCliente = AutoMapper.Mapper.Map<ent.ProductosE, bd.Producto>(_clienteModificar);
-            _repositorio.Adicionar(_modificarCliente);
+            _repositorio.Modificar(_modificarCliente);
             _repositorio.Grabar();
         }
 
         public void EliminarProducto(ent.ProductosE _clienteEliminar)
         {
             var _eliminarCliente = AutoMapper.Mapper.Map<ent.ProductosE, bd.Producto>(_clienteEliminar);
-            _repositorio.Adicionar(_eliminarCliente);
+            _repositorio.Eliminar(_eliminarCliente);
             _repositorio.Grabar();
         }
 
