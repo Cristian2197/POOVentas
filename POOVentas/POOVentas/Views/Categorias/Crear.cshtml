@@ -3,6 +3,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
     <div id="dvCrearClientes">
         <form action="/Clientes/Crear" method="post">
             <div class="form-horizontal">
