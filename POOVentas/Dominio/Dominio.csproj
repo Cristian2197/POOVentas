@@ -54,9 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriasD.cs" />
     <Compile Include="ClientesD.cs" />
     <Compile Include="MapeoBD.cs" />
-    <Compile Include="MapeoBDproducto.cs" />
     <Compile Include="ProductosD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

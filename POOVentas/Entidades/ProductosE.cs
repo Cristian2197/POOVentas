@@ -20,6 +20,6 @@ namespace Entidades
         [Display(Name = "Categoria")]
         public int id_categoria { get; set; }
 
-
+        public virtual CategoriaE CATEGORIA { get; set; }
     }
 }
