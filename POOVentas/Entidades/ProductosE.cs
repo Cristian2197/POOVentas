@@ -19,5 +19,7 @@ namespace Entidades
         public int stock { get; set; }
         [Display(Name = "Categoria")]
         public int id_categoria { get; set; }
+
+
     }
 }

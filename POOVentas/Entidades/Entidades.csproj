@@ -42,7 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriaE.cs" />
     <Compile Include="ClientesE.cs" />
+    <Compile Include="DetalleE.cs" />
+    <Compile Include="FacturaE.cs" />
+    <Compile Include="MODO_PAGOE.cs" />
     <Compile Include="ProductosE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
