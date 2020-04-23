@@ -25,6 +25,12 @@ namespace Dominio
 
             //Entidades hacia BD
             CreateMap<ent.ClientesE, bd.CLIENTE>();
+
+            //BD hacia entidades Productos
+            CreateMap<bd.Producto, ent.ProductosE>();
+
+            //Entidades hacia BD Producto
+            CreateMap<ent.ProductosE, bd.Producto>();
         }
     }
 }
