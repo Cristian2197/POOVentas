@@ -56,7 +56,10 @@
   <ItemGroup>
     <Compile Include="CategoriasD.cs" />
     <Compile Include="ClientesD.cs" />
+    <Compile Include="DetalleD.cs" />
+    <Compile Include="FacturaD.cs" />
     <Compile Include="MapeoBD.cs" />
+    <Compile Include="MODO_PAGOD.cs" />
     <Compile Include="ProductosD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
