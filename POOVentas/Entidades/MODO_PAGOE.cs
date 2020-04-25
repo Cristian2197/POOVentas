@@ -10,6 +10,6 @@ namespace Entidades
     {
         public int num_pago { get; set; }
         public string nombre { get; set; }
-        public string otros_detaller { get; set; }
+        public string otros_detalles { get; set; }
     }
 }
