@@ -58,11 +58,11 @@ namespace POOVentas.Controllers
             DetsFacturaE.precio = producto.precio * DetsFacturaE.cantidad;
 
             //Lleno la entidad que se enviará como parametro para crear el detalle
-            detalle.num_detalle = DetsFacturaE.Facturas.num_factura;
+            detalle.id_factura = DetsFacturaE.Facturas.num_factura;
             detalle.precio = DetsFacturaE.precio;
             detalle.id_producto = DetsFacturaE.id_producto;
             detalle.cantidad = DetsFacturaE.cantidad;
-            //detalle.id_factura = DetsFacturaE.id_factura;
+            detalle.num_detalle = DetsFacturaE.num_detalle;
 
             new dom.DetalleD().CrearDetalle(detalle);
             return RedirectToAction("VerDetsFact");

@@ -5,18 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="56de9ddf77b44c4aa2c9eec9a8d68d29" Name="Diagram1" ZoomLevel="80">
-        <EntityTypeShape EntityType="VentasPOOModel.CATEGORIA" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VentasPOOModel.CLIENTE" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="VentasPOOModel.DETALLE" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="VentasPOOModel.Factura" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="VentasPOOModel.MODO_PAGO" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="VentasPOOModel.Producto" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="VentasPOOModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="VentasPOOModel.FK_Producto_CATEGORIA" ManuallyRouted="false" />
-        <AssociationConnector Association="VentasPOOModel.FK_Factura_CLIENTE" ManuallyRouted="false" />
-        <AssociationConnector Association="VentasPOOModel.FK_DETALLE_Factura" ManuallyRouted="false" />
-        <AssociationConnector Association="VentasPOOModel.FK_DETALLE_Producto" ManuallyRouted="false" />
-        <AssociationConnector Association="VentasPOOModel.FK_Factura_MODO_PAGO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VentasPOOModel.CATEGORIA" Width="1.5" PointX="0.75" PointY="8.375" />
+        <EntityTypeShape EntityType="VentasPOOModel.CLIENTE" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="VentasPOOModel.DETALLE" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="VentasPOOModel.Factura" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="VentasPOOModel.MODO_PAGO" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="VentasPOOModel.Producto" Width="1.5" PointX="3" PointY="8" />
+        <EntityTypeShape EntityType="VentasPOOModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" />
+        <AssociationConnector Association="VentasPOOModel.FK_Producto_CATEGORIA" />
+        <AssociationConnector Association="VentasPOOModel.FK_Factura_CLIENTE" />
+        <AssociationConnector Association="VentasPOOModel.FK_DETALLE_Factura" />
+        <AssociationConnector Association="VentasPOOModel.FK_DETALLE_Producto" />
+        <AssociationConnector Association="VentasPOOModel.FK_Factura_MODO_PAGO" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

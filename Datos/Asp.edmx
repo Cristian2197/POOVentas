@@ -31,7 +31,7 @@
             <PropertyRef Name="id_factura" />
           </Key>
           <Property Name="num_detalle" Type="int" Nullable="false" />
-          <Property Name="id_factura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_factura" Type="int" Nullable="false" />
           <Property Name="id_producto" Type="int" />
           <Property Name="cantidad" Type="int" />
           <Property Name="precio" Type="money" />
@@ -166,6 +166,35 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VentasPOOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="VentasPOOEntitiesConnection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATEGORIA" EntityType="VentasPOOModel.CATEGORIA" />
+          <EntitySet Name="CLIENTE" EntityType="VentasPOOModel.CLIENTE" />
+          <EntitySet Name="DETALLE" EntityType="VentasPOOModel.DETALLE" />
+          <EntitySet Name="Factura" EntityType="VentasPOOModel.Factura" />
+          <EntitySet Name="MODO_PAGO" EntityType="VentasPOOModel.MODO_PAGO" />
+          <EntitySet Name="Producto" EntityType="VentasPOOModel.Producto" />
+          <EntitySet Name="sysdiagrams" EntityType="VentasPOOModel.sysdiagrams" />
+          <AssociationSet Name="FK_Producto_CATEGORIA" Association="VentasPOOModel.FK_Producto_CATEGORIA">
+            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_CLIENTE" Association="VentasPOOModel.FK_Factura_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_Factura" Association="VentasPOOModel.FK_DETALLE_Factura">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="DETALLE" EntitySet="DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_Producto" Association="VentasPOOModel.FK_DETALLE_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="DETALLE" EntitySet="DETALLE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_MODO_PAGO" Association="VentasPOOModel.FK_Factura_MODO_PAGO">
+            <End Role="MODO_PAGO" EntitySet="MODO_PAGO" />
+            <End Role="Factura" EntitySet="Factura" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="CATEGORIA">
           <Key>
             <PropertyRef Name="id_categoria" />
@@ -173,7 +202,7 @@
           <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_CATEGORIA" FromRole="CATEGORIA" ToRole="Producto" />
+          <NavigationProperty Name="Producto" Relationship="VentasPOOModel.FK_Producto_CATEGORIA" FromRole="CATEGORIA" ToRole="Producto" />
         </EntityType>
         <EntityType Name="CLIENTE">
           <Key>
@@ -184,9 +213,9 @@
           <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="fecha_nacimiento" Type="DateTime" Precision="0" />
-          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Factura" Relationship="Self.FK_Factura_CLIENTE" FromRole="CLIENTE" ToRole="Factura" />
           <Property Name="telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Factura" Relationship="VentasPOOModel.FK_Factura_CLIENTE" FromRole="CLIENTE" ToRole="Factura" />
         </EntityType>
         <EntityType Name="DETALLE">
           <Key>
@@ -194,12 +223,12 @@
             <PropertyRef Name="id_factura" />
           </Key>
           <Property Name="num_detalle" Type="Int32" Nullable="false" />
-          <Property Name="id_factura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_factura" Type="Int32" Nullable="false" />
           <Property Name="id_producto" Type="Int32" />
           <Property Name="cantidad" Type="Int32" />
           <Property Name="precio" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="Factura" Relationship="Self.FK_DETALLE_Factura" FromRole="DETALLE" ToRole="Factura" />
-          <NavigationProperty Name="Producto" Relationship="Self.FK_DETALLE_Producto" FromRole="DETALLE" ToRole="Producto" />
+          <NavigationProperty Name="Factura" Relationship="VentasPOOModel.FK_DETALLE_Factura" FromRole="DETALLE" ToRole="Factura" />
+          <NavigationProperty Name="Producto" Relationship="VentasPOOModel.FK_DETALLE_Producto" FromRole="DETALLE" ToRole="Producto" />
         </EntityType>
         <EntityType Name="Factura">
           <Key>
@@ -209,9 +238,9 @@
           <Property Name="id_cliente" Type="Int32" />
           <Property Name="fecha" Type="DateTime" Precision="0" />
           <Property Name="num_pago" Type="Int32" />
-          <NavigationProperty Name="CLIENTE" Relationship="Self.FK_Factura_CLIENTE" FromRole="Factura" ToRole="CLIENTE" />
-          <NavigationProperty Name="DETALLE" Relationship="Self.FK_DETALLE_Factura" FromRole="Factura" ToRole="DETALLE" />
-          <NavigationProperty Name="MODO_PAGO" Relationship="Self.FK_Factura_MODO_PAGO" FromRole="Factura" ToRole="MODO_PAGO" />
+          <NavigationProperty Name="CLIENTE" Relationship="VentasPOOModel.FK_Factura_CLIENTE" FromRole="Factura" ToRole="CLIENTE" />
+          <NavigationProperty Name="DETALLE" Relationship="VentasPOOModel.FK_DETALLE_Factura" FromRole="Factura" ToRole="DETALLE" />
+          <NavigationProperty Name="MODO_PAGO" Relationship="VentasPOOModel.FK_Factura_MODO_PAGO" FromRole="Factura" ToRole="MODO_PAGO" />
         </EntityType>
         <EntityType Name="MODO_PAGO">
           <Key>
@@ -220,7 +249,7 @@
           <Property Name="num_pago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="otros_detalles" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Factura" Relationship="Self.FK_Factura_MODO_PAGO" FromRole="MODO_PAGO" ToRole="Factura" />
+          <NavigationProperty Name="Factura" Relationship="VentasPOOModel.FK_Factura_MODO_PAGO" FromRole="MODO_PAGO" ToRole="Factura" />
         </EntityType>
         <EntityType Name="Producto">
           <Key>
@@ -231,22 +260,22 @@
           <Property Name="precio" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="stock" Type="Int32" />
           <Property Name="id_categoria" Type="Int32" />
-          <NavigationProperty Name="CATEGORIA" Relationship="Self.FK_Producto_CATEGORIA" FromRole="Producto" ToRole="CATEGORIA" />
-          <NavigationProperty Name="DETALLE" Relationship="Self.FK_DETALLE_Producto" FromRole="Producto" ToRole="DETALLE" />
+          <NavigationProperty Name="CATEGORIA" Relationship="VentasPOOModel.FK_Producto_CATEGORIA" FromRole="Producto" ToRole="CATEGORIA" />
+          <NavigationProperty Name="DETALLE" Relationship="VentasPOOModel.FK_DETALLE_Producto" FromRole="Producto" ToRole="DETALLE" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Producto_CATEGORIA">
-          <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
-          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <End Type="VentasPOOModel.CATEGORIA" Role="CATEGORIA" Multiplicity="0..1" />
+          <End Type="VentasPOOModel.Producto" Role="Producto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CATEGORIA">
               <PropertyRef Name="id_categoria" />
@@ -257,8 +286,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Factura_CLIENTE">
-          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
-          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <End Type="VentasPOOModel.CLIENTE" Role="CLIENTE" Multiplicity="0..1" />
+          <End Type="VentasPOOModel.Factura" Role="Factura" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CLIENTE">
               <PropertyRef Name="id_cliente" />
@@ -269,8 +298,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DETALLE_Factura">
-          <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
-          <End Role="DETALLE" Type="Self.DETALLE" Multiplicity="*" />
+          <End Type="VentasPOOModel.Factura" Role="Factura" Multiplicity="1" />
+          <End Type="VentasPOOModel.DETALLE" Role="DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Factura">
               <PropertyRef Name="num_factura" />
@@ -281,8 +310,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DETALLE_Producto">
-          <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
-          <End Role="DETALLE" Type="Self.DETALLE" Multiplicity="*" />
+          <End Type="VentasPOOModel.Producto" Role="Producto" Multiplicity="0..1" />
+          <End Type="VentasPOOModel.DETALLE" Role="DETALLE" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Producto">
               <PropertyRef Name="id_producto" />
@@ -293,8 +322,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Factura_MODO_PAGO">
-          <End Role="MODO_PAGO" Type="Self.MODO_PAGO" Multiplicity="0..1" />
-          <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+          <End Type="VentasPOOModel.MODO_PAGO" Role="MODO_PAGO" Multiplicity="0..1" />
+          <End Type="VentasPOOModel.Factura" Role="Factura" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MODO_PAGO">
               <PropertyRef Name="num_pago" />
@@ -304,35 +333,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="VentasPOOEntitiesConnection" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" />
-          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
-          <EntitySet Name="DETALLE" EntityType="Self.DETALLE" />
-          <EntitySet Name="Factura" EntityType="Self.Factura" />
-          <EntitySet Name="MODO_PAGO" EntityType="Self.MODO_PAGO" />
-          <EntitySet Name="Producto" EntityType="Self.Producto" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK_Producto_CATEGORIA" Association="Self.FK_Producto_CATEGORIA">
-            <End Role="CATEGORIA" EntitySet="CATEGORIA" />
-            <End Role="Producto" EntitySet="Producto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Factura_CLIENTE" Association="Self.FK_Factura_CLIENTE">
-            <End Role="CLIENTE" EntitySet="CLIENTE" />
-            <End Role="Factura" EntitySet="Factura" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DETALLE_Factura" Association="Self.FK_DETALLE_Factura">
-            <End Role="Factura" EntitySet="Factura" />
-            <End Role="DETALLE" EntitySet="DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DETALLE_Producto" Association="Self.FK_DETALLE_Producto">
-            <End Role="Producto" EntitySet="Producto" />
-            <End Role="DETALLE" EntitySet="DETALLE" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Factura_MODO_PAGO" Association="Self.FK_Factura_MODO_PAGO">
-            <End Role="MODO_PAGO" EntitySet="MODO_PAGO" />
-            <End Role="Factura" EntitySet="Factura" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -342,74 +342,74 @@
           <EntitySetMapping Name="CATEGORIA">
             <EntityTypeMapping TypeName="VentasPOOModel.CATEGORIA">
               <MappingFragment StoreEntitySet="CATEGORIA">
-                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CLIENTE">
             <EntityTypeMapping TypeName="VentasPOOModel.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="apellido" ColumnName="apellido" />
-                <ScalarProperty Name="direccion" ColumnName="direccion" />
-                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
                 <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DETALLE">
             <EntityTypeMapping TypeName="VentasPOOModel.DETALLE">
               <MappingFragment StoreEntitySet="DETALLE">
-                <ScalarProperty Name="num_detalle" ColumnName="num_detalle" />
-                <ScalarProperty Name="id_factura" ColumnName="id_factura" />
-                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
-                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
                 <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="id_factura" ColumnName="id_factura" />
+                <ScalarProperty Name="num_detalle" ColumnName="num_detalle" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Factura">
             <EntityTypeMapping TypeName="VentasPOOModel.Factura">
               <MappingFragment StoreEntitySet="Factura">
-                <ScalarProperty Name="num_factura" ColumnName="num_factura" />
-                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="num_pago" ColumnName="num_pago" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="num_factura" ColumnName="num_factura" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MODO_PAGO">
             <EntityTypeMapping TypeName="VentasPOOModel.MODO_PAGO">
               <MappingFragment StoreEntitySet="MODO_PAGO">
-                <ScalarProperty Name="num_pago" ColumnName="num_pago" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="otros_detalles" ColumnName="otros_detalles" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="num_pago" ColumnName="num_pago" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Producto">
             <EntityTypeMapping TypeName="VentasPOOModel.Producto">
               <MappingFragment StoreEntitySet="Producto">
-                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="precio" ColumnName="precio" />
-                <ScalarProperty Name="stock" ColumnName="stock" />
                 <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="VentasPOOModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
