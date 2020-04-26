@@ -57,7 +57,6 @@
     <Compile Include="CategoriasD.cs" />
     <Compile Include="ClientesD.cs" />
     <Compile Include="DetalleD.cs" />
-    <Compile Include="DetsFacturaD.cs" />
     <Compile Include="FacturaD.cs" />
     <Compile Include="MapeoBD.cs" />
     <Compile Include="MODO_PAGOD.cs" />

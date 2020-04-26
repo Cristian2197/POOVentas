@@ -45,7 +45,6 @@
     <Compile Include="CategoriaE.cs" />
     <Compile Include="ClientesE.cs" />
     <Compile Include="DetalleE.cs" />
-    <Compile Include="DetsFacturaE.cs" />
     <Compile Include="FacturaE.cs" />
     <Compile Include="MODO_PAGOE.cs" />
     <Compile Include="ProductosE.cs" />

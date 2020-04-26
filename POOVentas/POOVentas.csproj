@@ -268,10 +268,6 @@
     <Content Include="Views\Clientes\Detalle.cshtml" />
     <Content Include="Views\Categorias\Detalle.cshtml" />
     <Content Include="Views\Productos\Detalle.cshtml" />
-    <Content Include="Views\Facturas\VerDetallesProducto.cshtml" />
-    <Content Include="Views\Facturas\Index.cshtml" />
-    <Content Include="Views\Facturas\Crear.cshtml" />
-    <Content Include="Views\Facturas\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
