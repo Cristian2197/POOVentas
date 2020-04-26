@@ -40,5 +40,32 @@ namespace POOVentas.Controllers
             new dom.FacturaD().ModificarFactura(FacturaEditado);
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult VerDetsFact(int id)
+        {
+            var DetallesDeFactura = new ent.DetalleE();
+            DetallesDeFactura.Facturas = new dom.FacturaD().FacturasPorId(id);
+            return View(DetallesDeFactura);
+        }
+
+        [HttpPost]
+        public ActionResult VerDetsFact(ent.DetalleE DetsFacturaE)
+        {
+            var detalle = new ent.DetalleE();
+            var producto = new dom.ProductosD().ProductoPorID(DetsFacturaE.id_producto);
+
+            //Llena el total del detalle
+            DetsFacturaE.precio = producto.precio * DetsFacturaE.cantidad;
+
+            //Lleno la entidad que se enviará como parametro para crear el detalle
+            detalle.num_detalle = DetsFacturaE.Facturas.num_factura;
+            detalle.precio = DetsFacturaE.precio;
+            detalle.id_producto = DetsFacturaE.id_producto;
+            detalle.cantidad = DetsFacturaE.cantidad;
+            //detalle.id_factura = DetsFacturaE.id_factura;
+
+            new dom.DetalleD().CrearDetalle(detalle);
+            return RedirectToAction("VerDetsFact");
+        }
     }
 }

@@ -1,0 +1,128 @@
+﻿@model Entidades.DetalleE
+
+@{
+    ViewBag.Title = "VerDetsFact";
+}
+
+<h2>VerDetsFact</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @*<form>*@
+    <fieldset disabled>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Nombre de Cliente</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="@Model.Facturas.num_factura">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="exampleFormControlInput1">Numero de Factura</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="@Model.Facturas.num_factura">
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="exampleFormControlInput1">Fecha de Factura</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="@Model.Facturas.fecha">
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="exampleFormControlInput1">Modo de Pago</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" value="@Model.Facturas.num_pago">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    @*</form>*@
+
+    <form action="/Facturas/VerDetsFact" method="post">
+        @Html.HiddenFor(model => model.Facturas.num_factura, new
+        {
+            htmlAttributes = new
+            {
+                @class = "form-control"@*, @style = "visibility:hidden"*@}
+        })
+
+        @*@Html.EditorFor(model => model.PRODUCTOS.precio, new { htmlAttributes = new { @class = "form-control", @style = "visibility:hidden" } })*@
+        @Html.ValidationMessageFor(model => model.Facturas.num_factura, "", new { @class = "text-danger" })
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.id_producto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.id_producto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.id_producto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.cantidad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.cantidad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Crear Detalle Factura</button>
+        </div>
+    </form>
+
+    @*<div class="form-horizontal">
+            <h4>DetsFacturaE</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.id_detFact, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.id_detFact, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.id_detFact, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FACTURAS.num_factura, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FACTURAS.num_factura, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FACTURAS.num_factura, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.id_producto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.id_producto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.id_producto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.cantidad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.cantidad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.precio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.precio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>*@
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

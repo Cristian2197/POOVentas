@@ -13,5 +13,7 @@ namespace Entidades
         public int id_producto { get; set; }
         public int cantidad { get; set; }
         public double precio { get; set; }
+        public FacturaE Facturas { get; set; }
+    
     }
 }
