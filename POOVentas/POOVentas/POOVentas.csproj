@@ -265,6 +265,9 @@
     <Content Include="Views\Categorias\Index.cshtml" />
     <Content Include="Views\Categorias\Crear.cshtml" />
     <Content Include="Views\Categorias\Editar.cshtml" />
+    <Content Include="Views\Clientes\Detalle.cshtml" />
+    <Content Include="Views\Categorias\Detalle.cshtml" />
+    <Content Include="Views\Productos\Detalle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -41,5 +41,11 @@ namespace POOVentas.Controllers
             new dom.ClientesD().ModificarCliente(clienteEditado);
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult Detalle(int id)
+        {
+            var _cliente = new dom.ClientesD().ClientesPorID(id);
+            return PartialView("Detalle", _cliente);
+        }
     }
 }

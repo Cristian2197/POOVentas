@@ -41,5 +41,11 @@ namespace POOVentas.Controllers
             new dom.CategoriasD().ModificarCategoria(categoriaEditado);
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult Detalle(int id)
+        {
+            var _detalle = new dom.CategoriasD().CategoriasPorID(id);
+            return PartialView("Detalle", _detalle);
+        }
     }
 }

@@ -1,0 +1,57 @@
+﻿@model Entidades.ProductosE
+<div id="dvDetalleProdcutos">
+    <form action="/ Productos/Detalle/" method="post">
+        <div>
+            <h4>Los detalles del producto son:</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.id_producto)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.id_producto)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.nombre)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.precio)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.precio)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.stock)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.stock)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.id_categoria)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.id_categoria)
+                </dd>
+
+            </dl>
+        </div>
+    </form>
+</div>
+<p>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Regresar</button>
+    </div>
+</p>
+            
